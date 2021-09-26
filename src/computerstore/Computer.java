@@ -1,3 +1,4 @@
+package computerstore;
 public class Computer {
 
     String brand;
@@ -6,18 +7,7 @@ public class Computer {
     double price;
     protected static int computerCount = 0;
 
-    public Computer() {
-
-        System.out.println("Creating Computer using default constructor");
-
-        brand = "Apple"; model = "MacBook Pro1"; SN = 1; price = 1500;
-
-        computerCount ++;
-    }
-
     public Computer(String brandValue, String modelValue, long SNValue, double priceValue ) {
-
-        System.out.println("Creating Computer using parametrized constructor");
 
         brand = brandValue;
         model = modelValue;
@@ -27,16 +17,14 @@ public class Computer {
         computerCount ++;
     }
 
+    public Computer() {
+
+        this("Apple", "MacBook Pro1", 1, 1500 );
+    }
+
     public Computer(Computer c) {
+        this(c.brand, c.model, c.SN, c.price);
 
-        System.out.println("Creating Computer using copy constructor");
-
-        brand = c.brand;
-        model = c.model;
-        SN = c.SN;
-        price = c.price;
-
-        computerCount ++;
     }
 
     public String getBrand() {
@@ -44,7 +32,6 @@ public class Computer {
     }
 
     public void setBrand(String brand) {
-        System.out.println("Changing brand of Computer from :" + " " + this.brand + " " + "to " + brand);
         this.brand = brand;
     }
 
@@ -53,7 +40,6 @@ public class Computer {
     }
 
     public void setModel(String model) {
-        System.out.println("Changing model of Computer from :" + " " + this.model + " " + "to " + model);
         this.model = model;
     }
 
@@ -62,7 +48,6 @@ public class Computer {
     }
 
     public void setSN(long SN) {
-        System.out.println("Changing SN of Computer from :" + " " + this.SN + " " + "to " + SN);
         this.SN = SN;
     }
 
@@ -71,20 +56,19 @@ public class Computer {
     }
 
     public void setPrice(double price) {
-        System.out.println("Changing price of Computer from :" + " " + this.price + " " + "to " + price);
         this.price = price;
     }
 
-    public static int findNumberOfCreatedComputers() {
-
-        System.out.println("The number of Computers in the store are :" + " " +computerCount);
+     static int findNumberOfCreatedComputers() {
         return computerCount;
     }
 
     @Override
     public String toString() {
-        return "Details of this Computer are" + " " + "Brand :" + " "+ brand + " " + "Model :" + " " + model + " "
-                + "Serial Number :" + " " + SN + " " + "Price :" + " " + price + " " + "$";
+        return  "Brand :" + " "+ brand + "\n" +
+                "Model :" + " " + model + "\n" +
+                "SN :" + " " + SN + "\n" +
+                "Price :" + " $" + price;
     }
 
     public static void showComputerInfo(Computer c) {
@@ -106,7 +90,7 @@ public class Computer {
 
         Computer c1 = new Computer();
         Computer c2 = new Computer("Lenovo", "Thinkpad", 2, 1000);
-        Computer c3 = new Computer(c2);
+        Computer c3 = new Computer(c1);
         Computer c4 = new Computer();
         c4.setBrand("Dell"); c4.setModel("Inspiron"); c4.setSN(4); c4.setPrice(1200);
 
