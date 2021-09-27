@@ -82,13 +82,19 @@ public class Driver {
                     String brand = scanner2.next();
                     findComputersBy(brand);
                     break;
-                // QUIT
+                
+                case 4:
+                    System.out.println("Enter price to see all computers within the price :");
+                    double pricelessthan = scanner2.nextDouble();
+                    findCheaperThan(pricelessthan);
+                    break;
                 case 5:
                     System.out.print("Good Bye! :)");
                     System.exit(0);
             }
         }
     }
+
 
     private static void DisplayMenuOptions(){
         System.out.println("What do you want to do?\n" +
@@ -218,6 +224,16 @@ public class Driver {
         for(int i=0; i< inventory.length; i++){
             if(inventory[i].getBrand().equals(brand))
                 System.out.println(inventory[i]);
+        }
+
+    }
+    private static void findCheaperThan(double pricelessthan) {
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i].getPrice() <= pricelessthan) {
+                System.out.println(inventory[i]);
+            } else {
+                System.out.println("Sorry ! No computers available below this price");
+            }
         }
 
     }
