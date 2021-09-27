@@ -263,13 +263,15 @@ public class Driver {
 
     }
     private static void findCheaperThan(double pricelessthan) {
-        for (int i = 0; i < inventory.length; i++) {
-            if (inventory[i].getPrice() <= pricelessthan) {
+        boolean flag = false;
+        for (int i = 0; i < findNumberOfCreatedComputers(); i++) {
+            if (inventory[i].getPrice() < pricelessthan) {
                 System.out.println(inventory[i]);
-            } else {
-                System.out.println("Sorry ! No computers available below this price");
+                flag = true;
             }
         }
-
+        if (flag == false) {
+            System.out.println("Sorry ! No computers available below this price");
+        }
     }
 }
