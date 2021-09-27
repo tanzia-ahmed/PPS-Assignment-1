@@ -84,13 +84,20 @@ public class Driver {
 
                     }
                     break;
+                //SEARCH BY BRAND
                 case 3:
                     System.out.println("Enter the brand name you want to search:");
                     //PROMPT
                     String brand = scanner2.next();
                     findComputersBy(brand);
                     break;
-                // QUIT
+                //SEARCH BY PRICE
+                case 4:
+                    System.out.println("Enter price to see all computers within the price :");
+                    double pricelessthan = scanner2.nextDouble();
+                    findCheaperThan(pricelessthan);
+                    break;
+                //QUIT
                 case 5:
                     System.out.print("Good Bye! :)");
                     System.exit(0);
@@ -252,6 +259,16 @@ public class Driver {
         }
         if (flag == false) {
             System.out.println("No such brands in the house! :(");
+        }
+
+    }
+    private static void findCheaperThan(double pricelessthan) {
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i].getPrice() <= pricelessthan) {
+                System.out.println(inventory[i]);
+            } else {
+                System.out.println("Sorry ! No computers available below this price");
+            }
         }
 
     }
