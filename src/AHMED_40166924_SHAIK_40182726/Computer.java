@@ -1,9 +1,9 @@
-package computerstore;
+package AHMED_40166924_SHAIK_40182726;
 public class Computer {
 
     /**
      *
-     * @author shaik
+     * @author 40182726 - SHAIK
      */
     String brand;
     String model;

@@ -1,8 +1,8 @@
-package computerstore;
+package AHMED_40166924_SHAIK_40182726;
 
 import java.util.Scanner;
 
-import static computerstore.Computer.findNumberOfCreatedComputers;
+import static AHMED_40166924_SHAIK_40182726.Computer.findNumberOfCreatedComputers;
 
 public class Driver {
 
@@ -14,7 +14,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     public static void main(String[] args) {
 
@@ -42,7 +42,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     private static void Menu() {
         int option = 0; //user input value
@@ -116,7 +116,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     private static void DisplayMenuOptions() {
         System.out.println("What do you want to do?\n" +
@@ -130,7 +130,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     private static boolean checkPassword(String givenPassword) {
         boolean result = false;
@@ -144,7 +144,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     private static void EnterNewComputers() {
         if (findNumberOfCreatedComputers() == maxComputers) {
@@ -170,7 +170,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     private static void UpdateComputer() {
         System.out.println("What computer number do you want to update?");
@@ -201,7 +201,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     private static void UpdateMenu(Computer computer) {
         int option = 0; //user input value
@@ -242,7 +242,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     private static void DisplayUpdateMenuOptions() {
         System.out.println("What information would you like to change?\n" +
@@ -256,7 +256,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     private static void UpdateBrand(Computer computer) {
         Scanner sc = new Scanner(System.in);
@@ -267,7 +267,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     private static void UpdateModel(Computer computer) {
         Scanner sc = new Scanner(System.in);
@@ -278,7 +278,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     private static void UpdateSN(Computer computer) {
         //PROMPT
@@ -289,7 +289,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     private static void UpdatePrice(Computer computer) {
         //PROMPT
@@ -300,7 +300,7 @@ public class Driver {
 
     /**
      *
-     * @author tanzia
+     * @author 40166924 - AHMED
      */
     private static void findComputersBy(String brand) {
         boolean flag = false;
@@ -317,8 +317,8 @@ public class Driver {
     }
     /**
      *
-     * @author shaik
-     * edited by: tanzia
+     * @author 40182726 - SHAIK
+     * edited by: 40166924 - AHMED
      */
     private static void findCheaperThan(double pricelessthan) {
         boolean flag = false;
