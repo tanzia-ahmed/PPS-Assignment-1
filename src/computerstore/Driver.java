@@ -1,9 +1,23 @@
+// -----------------------------------------------------
+// Assignment 1
+// © Tanzia Ahmed
+// © Abdul Shaik
+// Written by: 40166924 Tanzia Ahmed
+//             40182726 Abdul Shaik
+// -----------------------------------------------------
+/*
+        This program has a Computer class with the required specifications (attributes, accessors and mutators,
+        constructors) and a Driver class which has a various methods for different functions a computer store requires.
+ */
 package computerstore;
 
 import java.util.Scanner;
 
 import static computerstore.Computer.findNumberOfCreatedComputers;
 
+/**
+ * Driver Class
+ */
 public class Driver {
 
     private static String password;
@@ -12,6 +26,10 @@ public class Driver {
     private static int maxComputers; //max number of computers that can be added
     private static Computer[] inventory; //array of computers
 
+    /**
+     * Main method
+     * @param args args
+     */
     public static void main(String[] args) {
 
         password = "password";
@@ -36,6 +54,9 @@ public class Driver {
 
     }
 
+    /**
+     * Display menu for the user/owner check password, various cases for different methods handled
+     */
     private static void Menu() {
         int option = 0; //user input value
         while (option != 5) {
@@ -106,6 +127,9 @@ public class Driver {
         }
     }
 
+    /**
+     * Menu Options
+     */
     private static void DisplayMenuOptions() {
         System.out.println("What do you want to do?\n" +
                 "1. Enter new computers (password required)\n" +
@@ -116,6 +140,11 @@ public class Driver {
                 "Please enter your choice >");
     }
 
+    /**
+     * Method to check if password is correct
+     * @param givenPassword password entered
+     * @return True if match else false
+     */
     private static boolean checkPassword(String givenPassword) {
         boolean result = false;
 
@@ -126,6 +155,9 @@ public class Driver {
         return result;
     }
 
+    /**
+     * Method to ask user number of computers they wish to store
+     */
     private static void EnterNewComputers() {
         if (findNumberOfCreatedComputers() == maxComputers) {
             System.out.println("HOUSEFULL!!");
@@ -148,6 +180,9 @@ public class Driver {
         }
     }
 
+    /**
+     * Update computer info
+     */
     private static void UpdateComputer() {
         System.out.println("What computer number do you want to update?");
 
@@ -174,6 +209,10 @@ public class Driver {
         }
     }
 
+    /**
+     * Menu options for updating various attributes of a computer
+     * @param computer computer object to update
+     */
     private static void UpdateMenu(Computer computer) {
         int option = 0; //user input value
         while (option != 5) {
@@ -211,6 +250,9 @@ public class Driver {
         }
     }
 
+    /**
+     * Menu display
+     */
     private static void DisplayUpdateMenuOptions() {
         System.out.println("What information would you like to change?\n" +
                 "1. brand\n" +
@@ -221,6 +263,10 @@ public class Driver {
                 "Enter your choice >");
     }
 
+    /**
+     * Method to update brand
+     * @param computer computer object
+     */
     private static void UpdateBrand(Computer computer) {
         Scanner sc = new Scanner(System.in);
         //PROMPT
@@ -228,6 +274,10 @@ public class Driver {
         computer.setBrand(brand);
     }
 
+    /**
+     * Method to update model
+     * @param computer computer object
+     */
     private static void UpdateModel(Computer computer) {
         Scanner sc = new Scanner(System.in);
         //PROMPT
@@ -235,6 +285,10 @@ public class Driver {
         computer.setModel(model);
     }
 
+    /**
+     * Method to update Sn
+     * @param computer computer object
+     */
     private static void UpdateSN(Computer computer) {
         //PROMPT
         Long sn = scanner2.nextLong();
@@ -242,6 +296,10 @@ public class Driver {
         System.out.println(computer);
     }
 
+    /**
+     * Method to update price
+     * @param computer computer object
+     */
     private static void UpdatePrice(Computer computer) {
         //PROMPT
         double price = scanner2.nextDouble();
@@ -249,6 +307,10 @@ public class Driver {
         System.out.println(computer);
     }
 
+    /**
+     * Method to find computer by brand
+     * @param brand brand
+     */
     private static void findComputersBy(String brand) {
         boolean flag = false;
         for (int i = 0; i < findNumberOfCreatedComputers(); i++) {
@@ -262,6 +324,11 @@ public class Driver {
         }
 
     }
+
+    /**
+     * Method to find computers less than a particular price
+     * @param pricelessthan price
+     */
     private static void findCheaperThan(double pricelessthan) {
         boolean flag = false;
         for (int i = 0; i < findNumberOfCreatedComputers(); i++) {
