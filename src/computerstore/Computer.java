@@ -1,6 +1,10 @@
 package computerstore;
 public class Computer {
 
+    /**
+     *
+     * @author shaik
+     */
     String brand;
     String model;
     long SN;
@@ -77,7 +81,7 @@ public class Computer {
     }
 
     public boolean equals(Object x) {
-        if (x == null || this == null || this.getClass() != x.getClass())
+        if (x == null || this.getClass() != x.getClass())
             return false;
         else
         {
@@ -85,31 +89,4 @@ public class Computer {
             return (this.brand == c.brand && this.model == c.model && this.price == c.price);
         }
     }
-    public static void main(String[] args) {
-
-
-        Computer c1 = new Computer();
-        Computer c2 = new Computer("Lenovo", "Thinkpad", 2, 1000);
-        Computer c3 = new Computer(c1);
-        Computer c4 = new Computer();
-        c4.setBrand("Dell"); c4.setModel("Inspiron"); c4.setSN(4); c4.setPrice(1200);
-
-        showComputerInfo(c1);
-        showComputerInfo(c2);
-        showComputerInfo(c3);
-        showComputerInfo(c4);
-
-        findNumberOfCreatedComputers();
-
-        if(c2.equals(c3))
-            System.out.println("Computers are the same");
-        else
-            System.out.println("Computers are different");
-
-        if(c1.equals(c3))
-            System.out.println("Computers are the same");
-        else
-            System.out.println("Computers are different");
-    }
-
 }

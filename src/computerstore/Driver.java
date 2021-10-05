@@ -12,6 +12,10 @@ public class Driver {
     private static int maxComputers; //max number of computers that can be added
     private static Computer[] inventory; //array of computers
 
+    /**
+     *
+     * @author tanzia
+     */
     public static void main(String[] args) {
 
         password = "password";
@@ -36,6 +40,10 @@ public class Driver {
 
     }
 
+    /**
+     *
+     * @author tanzia
+     */
     private static void Menu() {
         int option = 0; //user input value
         while (option != 5) {
@@ -44,7 +52,7 @@ public class Driver {
             //PROMPT
             option = scanner1.nextInt();
             switch (option) {
-                // ENTER NEW COMPUTERS
+                //1. ENTER NEW COMPUTERS
                 case 1:
                     System.out.print("Enter Password: ");
                     for (int i = 0; i < 3; i++) {
@@ -64,7 +72,7 @@ public class Driver {
 
                     }
                     break;
-                // UPDATE INFORMATION OF A COMPUTER
+                //2. UPDATE INFORMATION OF A COMPUTER
                 case 2:
                     System.out.print("Enter Password: ");
                     for (int i = 0; i < 3; i++) {
@@ -84,20 +92,20 @@ public class Driver {
 
                     }
                     break;
-                //SEARCH BY BRAND
+                //3. SEARCH BY BRAND
                 case 3:
                     System.out.println("Enter the brand name you want to search:");
                     //PROMPT
                     String brand = scanner2.next();
                     findComputersBy(brand);
                     break;
-                //SEARCH BY PRICE
+                //4. SEARCH BY PRICE
                 case 4:
                     System.out.println("Enter price to see all computers within the price :");
                     double pricelessthan = scanner2.nextDouble();
                     findCheaperThan(pricelessthan);
                     break;
-                //QUIT
+                //5. QUIT
                 case 5:
                     System.out.print("Good Bye! :)");
                     System.exit(0);
@@ -106,16 +114,24 @@ public class Driver {
         }
     }
 
+    /**
+     *
+     * @author tanzia
+     */
     private static void DisplayMenuOptions() {
         System.out.println("What do you want to do?\n" +
                 "1. Enter new computers (password required)\n" +
                 "2. Change information of a computer (password required)\n" +
                 "3. Display all computers by a specific brand\n" +
-                "4. Display all computers under a certain a price.\n" +
+                "4. Display all computers under a certain price.\n" +
                 "5. Quit\n" +
                 "Please enter your choice >");
     }
 
+    /**
+     *
+     * @author tanzia
+     */
     private static boolean checkPassword(String givenPassword) {
         boolean result = false;
 
@@ -126,6 +142,10 @@ public class Driver {
         return result;
     }
 
+    /**
+     *
+     * @author tanzia
+     */
     private static void EnterNewComputers() {
         if (findNumberOfCreatedComputers() == maxComputers) {
             System.out.println("HOUSEFULL!!");
@@ -148,9 +168,12 @@ public class Driver {
         }
     }
 
+    /**
+     *
+     * @author tanzia
+     */
     private static void UpdateComputer() {
         System.out.println("What computer number do you want to update?");
-
 
         //PROMPT
         int compIndex = scanner1.nextInt();
@@ -165,15 +188,21 @@ public class Driver {
             //PROMPT
             int op = scanner1.nextInt();
             switch (op) {
+                //1. ENTER NEW COMPUTER
                 case 1:
                     EnterNewComputers();
                     break;
+                //0. GO BACK TO MENU
                 case 0:
                     return;
             }
         }
     }
 
+    /**
+     *
+     * @author tanzia
+     */
     private static void UpdateMenu(Computer computer) {
         int option = 0; //user input value
         while (option != 5) {
@@ -211,6 +240,10 @@ public class Driver {
         }
     }
 
+    /**
+     *
+     * @author tanzia
+     */
     private static void DisplayUpdateMenuOptions() {
         System.out.println("What information would you like to change?\n" +
                 "1. brand\n" +
@@ -221,6 +254,10 @@ public class Driver {
                 "Enter your choice >");
     }
 
+    /**
+     *
+     * @author tanzia
+     */
     private static void UpdateBrand(Computer computer) {
         Scanner sc = new Scanner(System.in);
         //PROMPT
@@ -228,6 +265,10 @@ public class Driver {
         computer.setBrand(brand);
     }
 
+    /**
+     *
+     * @author tanzia
+     */
     private static void UpdateModel(Computer computer) {
         Scanner sc = new Scanner(System.in);
         //PROMPT
@@ -235,6 +276,10 @@ public class Driver {
         computer.setModel(model);
     }
 
+    /**
+     *
+     * @author tanzia
+     */
     private static void UpdateSN(Computer computer) {
         //PROMPT
         Long sn = scanner2.nextLong();
@@ -242,6 +287,10 @@ public class Driver {
         System.out.println(computer);
     }
 
+    /**
+     *
+     * @author tanzia
+     */
     private static void UpdatePrice(Computer computer) {
         //PROMPT
         double price = scanner2.nextDouble();
@@ -249,10 +298,14 @@ public class Driver {
         System.out.println(computer);
     }
 
+    /**
+     *
+     * @author tanzia
+     */
     private static void findComputersBy(String brand) {
         boolean flag = false;
         for (int i = 0; i < findNumberOfCreatedComputers(); i++) {
-            if (inventory[i].getBrand().equals(brand)) {
+            if (inventory[i].getBrand().equalsIgnoreCase(brand)) {
                 System.out.println(inventory[i]);
                 flag = true;
             }
@@ -262,6 +315,11 @@ public class Driver {
         }
 
     }
+    /**
+     *
+     * @author shaik
+     * edited by: tanzia
+     */
     private static void findCheaperThan(double pricelessthan) {
         boolean flag = false;
         for (int i = 0; i < findNumberOfCreatedComputers(); i++) {
