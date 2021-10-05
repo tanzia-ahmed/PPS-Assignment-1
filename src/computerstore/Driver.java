@@ -1,4 +1,5 @@
 package computerstore;
+
 import java.util.Scanner;
 
 import static computerstore.Computer.findNumberOfCreatedComputers;
@@ -10,7 +11,8 @@ public class Driver {
     private static Scanner scanner2;
     private static int maxComputers; //max number of computers that can be added
     private static Computer[] inventory; //array of computers
-    public static void main (String [] args){
+
+    public static void main(String[] args) {
 
         password = "password";
 
@@ -22,18 +24,23 @@ public class Driver {
         scanner1 = new Scanner(System.in);
         scanner2 = new Scanner(System.in);
 
-        //PROMPT
-        maxComputers = scanner1.nextInt();
-        inventory = new Computer[maxComputers];
+        try {
+            //PROMPT
+            maxComputers = scanner1.nextInt();
+            inventory = new Computer[maxComputers];
 
-        Menu();
+            Menu();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }
 
-    private static void Menu(){
+    private static void Menu() {
         int option = 0; //user input value
-        while(option !=5) {
+        while (option != 5) {
             DisplayMenuOptions();
+
             //PROMPT
             option = scanner1.nextInt();
             switch (option) {
@@ -77,26 +84,29 @@ public class Driver {
 
                     }
                     break;
+                //SEARCH BY BRAND
                 case 3:
                     System.out.println("Enter the brand name you want to search:");
+                    //PROMPT
                     String brand = scanner2.next();
                     findComputersBy(brand);
                     break;
-                
+                //SEARCH BY PRICE
                 case 4:
                     System.out.println("Enter price to see all computers within the price :");
                     double pricelessthan = scanner2.nextDouble();
                     findCheaperThan(pricelessthan);
                     break;
+                //QUIT
                 case 5:
                     System.out.print("Good Bye! :)");
                     System.exit(0);
+
             }
         }
     }
 
-
-    private static void DisplayMenuOptions(){
+    private static void DisplayMenuOptions() {
         System.out.println("What do you want to do?\n" +
                 "1. Enter new computers (password required)\n" +
                 "2. Change information of a computer (password required)\n" +
@@ -105,18 +115,21 @@ public class Driver {
                 "5. Quit\n" +
                 "Please enter your choice >");
     }
+
     private static boolean checkPassword(String givenPassword) {
         boolean result = false;
 
-        if(givenPassword.equals(password)){ //MATCHED
+        if (givenPassword.equals(password)) { //MATCHED
             result = true;
-        }else{ }
+        } else {
+        }
         return result;
     }
-    private static void EnterNewComputers(){
-        if(findNumberOfCreatedComputers() == maxComputers){
+
+    private static void EnterNewComputers() {
+        if (findNumberOfCreatedComputers() == maxComputers) {
             System.out.println("HOUSEFULL!!");
-        }else {
+        } else {
             System.out.println("How many computers do you want to enter?");
             //PROMPT
             int numComp = scanner1.nextInt();
@@ -134,52 +147,61 @@ public class Driver {
             }
         }
     }
+
     private static void UpdateComputer() {
         System.out.println("What computer number do you want to update?");
+
+
         //PROMPT
         int compIndex = scanner1.nextInt();
-        if (compIndex < findNumberOfCreatedComputers()){
-            System.out.println("Computer # "+ compIndex + "\n" +
+
+        if (compIndex < findNumberOfCreatedComputers() && compIndex > -1) {
+            System.out.println("Computer # " + compIndex + "\n" +
                     inventory[compIndex].toString());
             UpdateMenu(inventory[compIndex]);
-        }else{
-            System.out.println("Sorry, this number is not registered with a computer.\n"+
+        } else {
+            System.out.println("Sorry, this number is not registered with a computer.\n" +
                     "Do you want to enter a new computer (1) OR go back (0)?");
+            //PROMPT
             int op = scanner1.nextInt();
-            switch(op){
-            case 1:
-                EnterNewComputers();
-                break;
-            case 0:
-                return;
+            switch (op) {
+                case 1:
+                    EnterNewComputers();
+                    break;
+                case 0:
+                    return;
             }
         }
     }
-    private static void UpdateMenu(Computer computer){
+
+    private static void UpdateMenu(Computer computer) {
         int option = 0; //user input value
-        while(option !=5) {
+        while (option != 5) {
             DisplayUpdateMenuOptions();
+
             //PROMPT
             option = scanner2.nextInt();
             switch (option) {
                 case 1:
                     //BRAND
-                    System.out.println("Change brand name "+ computer.getBrand() + " to:");
+                    System.out.println("Change brand name " + computer.getBrand() + " to:");
                     UpdateBrand(computer);
+                    System.out.println(computer);
                     break;
                 case 2:
                     //MODEL
-                    System.out.println("Change model name "+ computer.getModel() + " to:");
+                    System.out.println("Change model name " + computer.getModel() + " to:");
                     UpdateModel(computer);
+                    System.out.println(computer);
                     break;
                 case 3:
                     //SN
-                    System.out.println("Change serial number "+ computer.getSN() + " to:");
+                    System.out.println("Change serial number " + computer.getSN() + " to:");
                     UpdateSN(computer);
                     break;
                 case 4:
                     //PRICE
-                    System.out.println("Change price "+ computer.getPrice() + " to:");
+                    System.out.println("Change price " + computer.getPrice() + " to:");
                     UpdatePrice(computer);
                     break;
                 case 5:
@@ -189,7 +211,7 @@ public class Driver {
         }
     }
 
-    private static void DisplayUpdateMenuOptions(){
+    private static void DisplayUpdateMenuOptions() {
         System.out.println("What information would you like to change?\n" +
                 "1. brand\n" +
                 "2. model\n" +
@@ -198,43 +220,58 @@ public class Driver {
                 "5. Quit\n" +
                 "Enter your choice >");
     }
+
     private static void UpdateBrand(Computer computer) {
-        System.out.println("Im brand");
-        String brand = scanner2.next();
+        Scanner sc = new Scanner(System.in);
+        //PROMPT
+        String brand = sc.nextLine();
         computer.setBrand(brand);
-        System.out.println(computer);
     }
+
     private static void UpdateModel(Computer computer) {
-        System.out.println("Im model");
-        String model = scanner2.next();
+        Scanner sc = new Scanner(System.in);
+        //PROMPT
+        String model = sc.nextLine();
         computer.setModel(model);
-        System.out.println(computer);
     }
+
     private static void UpdateSN(Computer computer) {
+        //PROMPT
         Long sn = scanner2.nextLong();
         computer.setSN(sn);
         System.out.println(computer);
     }
+
     private static void UpdatePrice(Computer computer) {
+        //PROMPT
         double price = scanner2.nextDouble();
         computer.setPrice(price);
         System.out.println(computer);
     }
-    private static void findComputersBy(String brand){
-        for(int i=0; i< inventory.length; i++){
-            if(inventory[i].getBrand().equals(brand))
+
+    private static void findComputersBy(String brand) {
+        boolean flag = false;
+        for (int i = 0; i < findNumberOfCreatedComputers(); i++) {
+            if (inventory[i].getBrand().equals(brand)) {
                 System.out.println(inventory[i]);
+                flag = true;
+            }
+        }
+        if (flag == false) {
+            System.out.println("No such brands in the house! :(");
         }
 
     }
     private static void findCheaperThan(double pricelessthan) {
-        for (int i = 0; i < inventory.length; i++) {
-            if (inventory[i].getPrice() <= pricelessthan) {
+        boolean flag = false;
+        for (int i = 0; i < findNumberOfCreatedComputers(); i++) {
+            if (inventory[i].getPrice() < pricelessthan) {
                 System.out.println(inventory[i]);
-            } else {
-                System.out.println("Sorry ! No computers available below this price");
+                flag = true;
             }
         }
-
+        if (flag == false) {
+            System.out.println("Sorry ! No computers available below this price");
+        }
     }
 }
